@@ -8,9 +8,10 @@ pipeline {
 
 
     stages {
-        stage('Hello') {
+        stage('terraform init') {
             steps {
-                echo 'Hello World'
+                sh 'terraform init' 
+                sh ' terraform plan'
             }
         }
     }
