@@ -21,5 +21,11 @@ pipeline {
                             parameters: [choice(name: 'Deploy the code?', choices: 'QA\nDEV')]
                 }
             }  }
+        stage('terraform apply') {
+            steps {
+               sh 'terraform workspace new QA && terraform workspace select QA'
+            }
+        }
     }
+    
 }
