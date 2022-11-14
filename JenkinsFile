@@ -14,5 +14,12 @@ pipeline {
                 sh ' terraform plan'
             }
         }
+        stage('Choice') {
+            steps {
+            script {
+                    env.workspace = input message: 'User input required', ok: 'Apply!',
+                            parameters: [choice(name: 'Deploy the code?', choices: 'QA\nDEV')]
+                }
+            }  }
     }
 }
